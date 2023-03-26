@@ -1,2 +1,2 @@
-# Aes Decrypter and Encrypter
+# Encrypter and Decrypter
 

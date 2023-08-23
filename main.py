@@ -7,12 +7,12 @@ import os
 ##############################################################################################
 arg = argparse.ArgumentParser(description='encrypt and decrypt')
 
-arg.add_argument('-f', '--file', type=str, help='Указать путь до фала для шифровки/дешифровки')
-arg.add_argument('-p', '--password', type=str, help='Указать пароль для шифровки/дешифровки')
-arg.add_argument('-e', '--encrypt', type=bool, const=True, default=False, nargs='?', help='Шифровать файл')
-arg.add_argument('-d', '--decrypt', type=bool, const=True, default=False, nargs='?', help='Дешифровать файл')
-arg.add_argument('--aes', type=bool, const=True, default=False, nargs='?', help='Шифровка методом AES (укажите -e или -d)')
-arg.add_argument('--rsa', type=bool, const=True, default=False, nargs='?', help='Шифровка методом RSA (укажите -e или -d)')
+arg.add_argument('-f', '--file', type=str, help='set path to the file for encrypt/decrypt')
+arg.add_argument('-p', '--password', type=str, help='set password for AES algorithm')
+arg.add_argument('-e', '--encrypt', type=bool, const=True, default=False, nargs='?', help='set this param to encrypt file')
+arg.add_argument('-d', '--decrypt', type=bool, const=True, default=False, nargs='?', help='set this param to decrypt file')
+arg.add_argument('--aes', type=bool, const=True, default=False, nargs='?', help='encrypt/decrypt by AES')
+arg.add_argument('--rsa', type=bool, const=True, default=False, nargs='?', help='encrypt/decrypt by RSA')
 
 param = arg.parse_args()
 ##############################################################################################
@@ -70,11 +70,11 @@ if __name__ == "__main__":
     if os.path.isfile(param.file):
         try:
             if param.decrypt == None and  param.encrypt == None:
-                print("Вы не указали, что нужно сделать с файлом")
+                print("[+] Please, set -d or -e param")
                 print("enc_dec.py -h")
                 
             elif param.password == None and param.aes:
-                print('Пароль не указан')
+                print('[+] Please, set -p param')
                 print("enc_dec.py -h")
             
             elif param.encrypt and param.aes:

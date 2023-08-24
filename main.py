@@ -63,10 +63,7 @@ def decrypt_rsa(file_for_decrypt):
     else:
         print("[+] Can't find priv_key")
     
-    
-
-
-if __name__ == "__main__":
+def main():
     if os.path.isfile(param.file):
         try:
             if param.decrypt == None and  param.encrypt == None:
@@ -98,4 +95,6 @@ if __name__ == "__main__":
     else:
         print(f"[+] Can't find {param.file}")
 
-        
+
+if __name__ == "__main__":
+    main()
